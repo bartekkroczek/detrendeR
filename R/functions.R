@@ -60,7 +60,7 @@ gettrend <- function(signal, degree=NULL, maxfreq=NULL, time=NULL){
     x <- seq(length(signal))
   }
   y <- as.vector(signal)
-  m <- glm(y~poly(x,deg))
+  m <- glm(y~stats::poly(x,degree=deg))
   retval <- structure(as.vector(predict(m)),
                       values=y,
                       detrended=as.vector(residuals(m)),
