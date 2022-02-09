@@ -4,6 +4,10 @@ Version: 0.9
 Authors@R: c(person("Tomasz", "Smoleń", email="tomasz.smolen@uj.edu.pl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1884-4909")),
              person("Bartłomiej", "Kroczek", email="bartek.kroczek@doctoral.uj.edu.pl", role = "ctb", comment = c(ORCID = "0000-0002-4632-636X")))
 Description: Package provides a set of functions that detect and remove linear or polynomial trend in time-serie signal.
+Suggests:
+    knitr
+VignetteBuilder: 
+    knitr
 License: use_gpl3_license()
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

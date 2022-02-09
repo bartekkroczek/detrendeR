@@ -2,10 +2,7 @@
 title: "detrendeR"
 subtitle: "Detect and remove trends in the time-series signal."
 bibliography: references.bib
-
-output: 
-     rmarkdown::html_vignette:
-          keep_md: yes
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{detrendeR}
   %\VignetteEngine{knitr::rmarkdown}
