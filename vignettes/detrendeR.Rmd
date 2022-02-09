@@ -12,7 +12,14 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+     collapse = TRUE,
+     comment = "#>",
+     fig.width = 7.1,
+     fig.height = 5
+)
+```
 
 
 This package provides a small set of functions that detect and remove linear or polynomial trends 
@@ -21,8 +28,7 @@ does not depend on any other package or function outside of the 'stat' namespace
 
 ## Installation
 
-
-```r
+```{r install, eval=FALSE, include=TRUE}
 library(devtools)
 devtools::install_github("bartekkroczek/detrendeR")
 
@@ -38,8 +44,7 @@ is important for many reasons, including to emphasize the oscillatory nature of 
 
  
 
-
-```r
+```{r signal}
 n <- 48 # no. of data points
 time <- 1 # how many sec artifical signal lasts
 freq <- 6 # frequency of miningful oscilaltion
@@ -65,16 +70,13 @@ plot(f[1:length(f) / 2], mag[1:length(f) / 2],
 )
 ```
 
-![](detrendeR_files/figure-html/signal-1.png)<!-- -->
-
 Although the oscillation in the signal is quite distinct, the trend makes it barely
 noticeable in the spectrum.
 
 A popular method of getting rid of a trend is to "filter" the signal with a moving average.
 However, this can lead to frequency artifacts, as shown in (@placeholder). 
 
-
-```r
+```{r moving_avg}
 roll_mean <- (function(x, n = 5) filter(x, rep(1 / n, n), sides = 2))
 roll_mean_ord  <- 5 # how many points averaged
 
@@ -102,13 +104,10 @@ arrows(x0 = 3.9, y0 = 0.38, x1 = 6.8, y1 = 0.22)
 text(x = 3.75, y = 0.43, label = "Desired effect")
 ```
 
-![](detrendeR_files/figure-html/moving_avg-1.png)<!-- -->
-
 As an alternative, we propose a small set of functions that allows to detect and remove a
 linear or polynomial trend in the time series without contaminating signal.
 
-
-```r
+```{r detrendeR}
 library(detrendeR)
 
 detrend <- detrendeR::getltrend(signal)
@@ -128,15 +127,12 @@ plot(f[1:length(f) / 2], mag[1:length(f) / 2],
 )
 ```
 
-![](detrendeR_files/figure-html/detrendeR-1.png)<!-- -->
-
 
 ## Usage
 
 ### Random data 
 
-
-```r
+```{r signal_usage}
 n <- 48 # no. of data points
 time <- 1 # how many sec artifical signal lasts
 freq <- 6 # frequency of miningful oscilaltion
@@ -149,38 +145,28 @@ signal <- sine + trend + noise
 
 ### Remove and plot linear trend 
 
-
-```r
+```{r lin_trend}
 detrend <- detrendeR::getltrend(signal)
 plot(detrend)
 ```
 
-![](detrendeR_files/figure-html/lin_trend-1.png)<!-- -->
-
 ### Remove polynomial trend by setting a degree
 
-
-```r
+```{r pol_deg}
 detrend <- detrendeR::gettrend(signal, degree = 3)
 plot(detrend)
 ```
 
-![](detrendeR_files/figure-html/pol_deg-1.png)<!-- -->
-
 ### ... or set degree automatically
 
-
-```r
+```{r pol_auto}
 detrend <- detrendeR::gettrend(signal, maxfreq = 3, time = 1)
 plot(detrend)
 ```
 
-![](detrendeR_files/figure-html/pol_auto-1.png)<!-- -->
-
 ### Get detrended signal
 
-
-```r
+```{r detrended}
 detrend <- detrendeR::gettrend(signal, degree = 5)
 
 time  <- time(detrend) # same as time  <- t
@@ -191,8 +177,6 @@ layout(matrix(c(1, 2), 2, 1, byrow = TRUE))
 plot(time, orig, type = "l", xlab = "Time [s]", ylab = "Val", main = "Original signal")
 plot(time, res, type = "l", xlab = "Time [s]", ylab = "Val", main = "Detrended signal")
 ```
-
-![](detrendeR_files/figure-html/detrended-1.png)<!-- -->
 
 
 ## Authors
@@ -206,36 +190,6 @@ plot(time, res, type = "l", xlab = "Time [s]", ylab = "Val", main = "Detrended s
 
 ## Reproducibility 
 
-
-```r
+```{r session_info}
 sessionInfo()
-#> R version 4.1.2 (2021-11-01)
-#> Platform: x86_64-pc-linux-gnu (64-bit)
-#> Running under: EndeavourOS
-#> 
-#> Matrix products: default
-#> BLAS:   /usr/lib/libopenblasp-r0.3.19.so
-#> LAPACK: /usr/lib/liblapack.so.3.10.0
-#> 
-#> locale:
-#>  [1] LC_CTYPE=en_GB.UTF-8       LC_NUMERIC=C              
-#>  [3] LC_TIME=pl_PL.UTF-8        LC_COLLATE=en_GB.UTF-8    
-#>  [5] LC_MONETARY=pl_PL.UTF-8    LC_MESSAGES=en_GB.UTF-8   
-#>  [7] LC_PAPER=pl_PL.UTF-8       LC_NAME=C                 
-#>  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-#> [11] LC_MEASUREMENT=pl_PL.UTF-8 LC_IDENTIFICATION=C       
-#> 
-#> attached base packages:
-#> [1] stats     graphics  grDevices utils     datasets  methods   base     
-#> 
-#> other attached packages:
-#> [1] detrendeR_0.9
-#> 
-#> loaded via a namespace (and not attached):
-#>  [1] digest_0.6.29   R6_2.5.1        jsonlite_1.7.3  magrittr_2.0.2 
-#>  [5] evaluate_0.14   highr_0.9       stringi_1.7.6   rlang_1.0.0    
-#>  [9] cli_3.1.1       jquerylib_0.1.4 bslib_0.3.1     rmarkdown_2.11 
-#> [13] tools_4.1.2     stringr_1.4.0   xfun_0.29       yaml_2.2.2     
-#> [17] fastmap_1.1.0   compiler_4.1.2  htmltools_0.5.2 knitr_1.37     
-#> [21] sass_0.4.0
 ```
