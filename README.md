@@ -50,7 +50,7 @@ plot(f[1:length(f) / 2], mag[1:length(f) / 2],
 )
 ```
 
-![](vignettes/detrendeR_files/figure-html/signal-1.png)<!-- -->
+![](vignettes/detrendeR_files/figure-markdown_strict/signal-1.png)<!-- -->
 
 Although the oscillation in the signal is quite distinct, the trend makes it barely
 noticeable in the spectrum.
@@ -87,7 +87,7 @@ arrows(x0 = 3.9, y0 = 0.38, x1 = 6.8, y1 = 0.22)
 text(x = 3.75, y = 0.43, label = "Desired effect")
 ```
 
-![](vignettes/detrendeR_files/figure-html/moving_avg-1.png)<!-- -->
+![](vignettes/detrendeR_files/figure-markdown_strict/moving_avg-1.png)<!-- -->
 
 As an alternative, we propose a small set of functions that allows to detect and remove a
 linear or polynomial trend in the time series without contaminating signal.
@@ -113,7 +113,7 @@ plot(f[1:length(f) / 2], mag[1:length(f) / 2],
 )
 ```
 
-![](vignettes/detrendeR_files/figure-html/detrendeR-1.png)<!-- -->
+![](vignettes/detrendeR_files/figure-markdown_strict/detrendeR-1.png)<!-- -->
 
 
 ## Usage
@@ -140,7 +140,7 @@ detrend <- detrendeR::getltrend(signal)
 plot(detrend)
 ```
 
-![](vignettes/detrendeR_files/figure-html/lin_trend-1.png)<!-- -->
+![](vignettes/detrendeR_files/figure-markdown_strict/lin_trend-1.png)<!-- -->
 
 ### Remove polynomial trend by setting a degree
 
@@ -150,7 +150,7 @@ detrend <- detrendeR::gettrend(signal, degree = 3)
 plot(detrend)
 ```
 
-![](vignettes/detrendeR_files/figure-html/pol_deg-1.png)<!-- -->
+![](vignettes/detrendeR_files/figure-markdown_strict/pol_deg-1.png)<!-- -->
 
 ### ... or set degree automatically
 
@@ -160,7 +160,7 @@ detrend <- detrendeR::gettrend(signal, maxfreq = 3, time = 1)
 plot(detrend)
 ```
 
-![](vignettes/detrendeR_files/figure-html/pol_auto-1.png)<!-- -->
+![](vignettes/detrendeR_files/figure-markdown_strict/pol_auto-1.png)<!-- -->
 
 ### Get detrended signal
 
@@ -177,7 +177,7 @@ plot(time, orig, type = "l", xlab = "Time [s]", ylab = "Val", main = "Original s
 plot(time, res, type = "l", xlab = "Time [s]", ylab = "Val", main = "Detrended signal")
 ```
 
-![](vignettes/detrendeR_files/figure-html/detrended-1.png)<!-- -->
+![](vignettes/detrendeR_files/figure-markdown_strict/detrended-1.png)<!-- -->
 
 
 ## Authors
