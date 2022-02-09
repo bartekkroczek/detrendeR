@@ -1,19 +1,4 @@
----
-title: "detrendeR"
-subtitle: "Detect and remove trends in the time-series signal."
-bibliography: references.bib
-
-output: 
-     rmarkdown::html_vignette:
-          keep_md: yes
-vignette: >
-  %\VignetteIndexEntry{detrendeR}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-
-
+# detrendeR - remove trend from signal and avoid artifacts
 
 This package provides a small set of functions that detect and remove linear or polynomial trends 
 in the time-series signal. The main functions are '*getltrend*' and '*gettrend*'. This package 
