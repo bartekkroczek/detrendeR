@@ -1,6 +1,6 @@
 Package: detrendeR
 Title: Remove linear or polynomial trend from signal
-Version: 0.9.1
+Version: 0.9.2
 Authors@R: c(person("Tomasz", "Smoleń", email="tomasz.smolen@uj.edu.pl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1884-4909")),
              person("Bartłomiej", "Kroczek", email="bartek.kroczek@doctoral.uj.edu.pl", role = c("aut", "ctb"), comment = c(ORCID = "0000-0002-4632-636X")))
 Description: Package provides a set of functions that detect and remove linear or polynomial trend in time-serie signal.

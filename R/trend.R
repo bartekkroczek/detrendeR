@@ -21,7 +21,7 @@ plot.trend <- function(x,...){
 
 #' Generic function for class 'trend'
 #' Returns the time vector for the trend.
-#' @seealso [gettrend()], [getltrend()], [plot.trend()], [detrended()], [orisignal()]
+#' @seealso [gettrend()], [getltrend()], [plot.trend()], [detrended()], [orisignal()], [predict.trend()]
 #' @export
 time.trend <- function(x,...){
   attr(x, "time")
@@ -30,7 +30,7 @@ time.trend <- function(x,...){
 #' Function for class 'trend'
 #'
 #' Returns the detrended signal for the trend.
-#' @seealso [gettrend()], [getltrend()], [plot.trend()], [time.trend()], [orisignal()]
+#' @seealso [gettrend()], [getltrend()], [plot.trend()], [time.trend()], [orisignal()], [predict.trend()]
 #' @export
 detrended <- function(x,...){
   attr(x, "detrended")
@@ -39,8 +39,23 @@ detrended <- function(x,...){
 #' Function for class 'trend'
 #'
 #' Returns the initial signal for the trend.
-#' @seealso [gettrend()], [getltrend()], [plot.trend()], [time.trend()], [detrended()]
+#' @seealso [gettrend()], [getltrend()], [plot.trend()], [time.trend()], [detrended()], [predict.trend()]
 #' @export
 orisignal <- function(x,...){
   attr(x, "values")
+}
+
+#' Function for class 'trend'
+#'
+#' Predicts the trend for new time interval
+#' Returns a 'trend' class object.
+#' @seealso [gettrend()], [getltrend()], [plot.trend()], [time.trend()], [detrended()], [orisignal()]
+#' @export
+predict.trend <- function(x, newtime,...){
+  structure(as.vector(predict(attr(x, "model"), newdata=data.frame(x=newtime))),
+            values=rep(NA, length(newtime)),
+            detrended=rep(NA, length(newtime)),
+            time=newtime,
+            model=attr(x, "model"),
+            class="trend")
 }

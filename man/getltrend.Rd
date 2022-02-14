@@ -18,6 +18,7 @@ The object also contains:
 \item{values}{original values of the signal}
 \item{detrended}{the difference between the original values of the signal and the trend}
 \item{time}{vector of the time domain of the signal}
+\item{model}{model used to predct trend for purpose of estimating the trend on new data}
 }
 \description{
 This function detects a linear trend and returns it as a vector.
@@ -28,11 +29,12 @@ This function is a wrapper for \code{\link[=gettrend]{gettrend()}}.
 x <- sin(seq(0, 6, length.out=100)) + rnorm(100)
 trend1 <- getltrend(x, time=1)
 detrended(trend1)
+predict(trend1, newtime=seq(1, 2, length.out=100))
 
 data(austres)
 trend2 <- getltrend(austres)
 plot(trend2)
 }
 \seealso{
-\code{\link[=gettrend]{gettrend()}}, \code{\link[=plot.trend]{plot.trend()}}, \code{\link[=time.trend]{time.trend()}}, \code{\link[=detrended]{detrended()}}, \code{\link[=orisignal]{orisignal()}}
+\code{\link[=gettrend]{gettrend()}}, \code{\link[=plot.trend]{plot.trend()}}, \code{\link[=time.trend]{time.trend()}}, \code{\link[=detrended]{detrended()}}, \code{\link[=orisignal]{orisignal()}}, \code{\link[=predict.trend]{predict.trend()}}
 }

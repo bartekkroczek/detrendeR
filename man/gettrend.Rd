@@ -22,6 +22,7 @@ The object also contains:
 \item{values}{original values of the signal}
 \item{detrended}{the difference between the original values of the signal and the trend}
 \item{time}{vector of the time domain of the signal}
+\item{model}{model used to predct trend for purpose of estimating the trend on new data}
 }
 \description{
 This function detects a polynomial trend of n-th degree and returns it as a vector.
@@ -34,11 +35,12 @@ The time can be recognised if the signal is a time-serie object.
 x <- sin(seq(0, 6, length.out=100)) + rnorm(100)
 trend1 <- gettrend(x, maxfreq=2, time=1)
 detrended(trend1)
+predict(trend1, newtime=seq(1, 2, length.out=100))
 
 data(austres)
 trend2 <- gettrend(austres, maxfreq=.1)
 plot(trend2)
 }
 \seealso{
-\code{\link[=getltrend]{getltrend()}}, \code{\link[=plot.trend]{plot.trend()}}, \code{\link[=time.trend]{time.trend()}}, \code{\link[=detrended]{detrended()}}, \code{\link[=orisignal]{orisignal()}}
+\code{\link[=getltrend]{getltrend()}}, \code{\link[=plot.trend]{plot.trend()}}, \code{\link[=time.trend]{time.trend()}}, \code{\link[=detrended]{detrended()}}, \code{\link[=orisignal]{orisignal()}}, \code{\link[=predict.trend]{predict.trend()}}
 }

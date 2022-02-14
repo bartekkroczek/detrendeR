@@ -10,5 +10,5 @@ orisignal(x, ...)
 Returns the initial signal for the trend.
 }
 \seealso{
-\code{\link[=gettrend]{gettrend()}}, \code{\link[=getltrend]{getltrend()}}, \code{\link[=plot.trend]{plot.trend()}}, \code{\link[=time.trend]{time.trend()}}, \code{\link[=detrended]{detrended()}}
+\code{\link[=gettrend]{gettrend()}}, \code{\link[=getltrend]{getltrend()}}, \code{\link[=plot.trend]{plot.trend()}}, \code{\link[=time.trend]{time.trend()}}, \code{\link[=detrended]{detrended()}}, \code{\link[=predict.trend]{predict.trend()}}
 }

@@ -15,11 +15,13 @@
 #' \item{values}{original values of the signal}
 #' \item{detrended}{the difference between the original values of the signal and the trend}
 #' \item{time}{vector of the time domain of the signal}
-#' @seealso [getltrend()], [plot.trend()], [time.trend()], [detrended()], [orisignal()]
+#' \item{model}{model used to predct trend for purpose of estimating the trend on new data}
+#' @seealso [getltrend()], [plot.trend()], [time.trend()], [detrended()], [orisignal()], [predict.trend()]
 #' @examples
 #' x <- sin(seq(0, 6, length.out=100)) + rnorm(100)
 #' trend1 <- gettrend(x, maxfreq=2, time=1)
 #' detrended(trend1)
+#' predict(trend1, newtime=seq(1, 2, length.out=100))
 #'
 #' data(austres)
 #' trend2 <- gettrend(austres, maxfreq=.1)
@@ -69,11 +71,12 @@ gettrend <- function(signal, degree=NULL, maxfreq=NULL, time=NULL){
     x <- seq(length(signal))
   }
   y <- as.vector(signal)
-  m <- glm(y~stats::poly(x,degree=deg))
+  m <- lm(y~stats::poly(x,degree=deg))
   retval <- structure(as.vector(predict(m)),
                       values=y,
                       detrended=as.vector(residuals(m)),
                       time=x,
+                      model=m,
                       class="trend")
   return(retval)
 }
@@ -92,11 +95,13 @@ gettrend <- function(signal, degree=NULL, maxfreq=NULL, time=NULL){
 #' \item{values}{original values of the signal}
 #' \item{detrended}{the difference between the original values of the signal and the trend}
 #' \item{time}{vector of the time domain of the signal}
-#' @seealso [gettrend()], [plot.trend()], [time.trend()], [detrended()], [orisignal()]
+#' \item{model}{model used to predct trend for purpose of estimating the trend on new data}
+#' @seealso [gettrend()], [plot.trend()], [time.trend()], [detrended()], [orisignal()], [predict.trend()]
 #' @examples
 #' x <- sin(seq(0, 6, length.out=100)) + rnorm(100)
 #' trend1 <- getltrend(x, time=1)
 #' detrended(trend1)
+#' predict(trend1, newtime=seq(1, 2, length.out=100))
 #'
 #' data(austres)
 #' trend2 <- getltrend(austres)

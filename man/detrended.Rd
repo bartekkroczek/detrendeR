@@ -10,5 +10,5 @@ detrended(x, ...)
 Returns the detrended signal for the trend.
 }
 \seealso{
-\code{\link[=gettrend]{gettrend()}}, \code{\link[=getltrend]{getltrend()}}, \code{\link[=plot.trend]{plot.trend()}}, \code{\link[=time.trend]{time.trend()}}, \code{\link[=orisignal]{orisignal()}}
+\code{\link[=gettrend]{gettrend()}}, \code{\link[=getltrend]{getltrend()}}, \code{\link[=plot.trend]{plot.trend()}}, \code{\link[=time.trend]{time.trend()}}, \code{\link[=orisignal]{orisignal()}}, \code{\link[=predict.trend]{predict.trend()}}
 }

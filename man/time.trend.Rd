@@ -3,14 +3,14 @@
 \name{time.trend}
 \alias{time.trend}
 \title{Generic function for class 'trend'
-Returns the time for the trend.}
+Returns the time vector for the trend.}
 \usage{
 \method{time}{trend}(x, ...)
 }
 \description{
 Generic function for class 'trend'
-Returns the time for the trend.
+Returns the time vector for the trend.
 }
 \seealso{
-\code{\link[=gettrend]{gettrend()}}, \code{\link[=getltrend]{getltrend()}}, \code{\link[=plot.trend]{plot.trend()}}, \code{\link[=detrended]{detrended()}}, \code{\link[=orisignal]{orisignal()}}
+\code{\link[=gettrend]{gettrend()}}, \code{\link[=getltrend]{getltrend()}}, \code{\link[=plot.trend]{plot.trend()}}, \code{\link[=detrended]{detrended()}}, \code{\link[=orisignal]{orisignal()}}, \code{\link[=predict.trend]{predict.trend()}}
 }
