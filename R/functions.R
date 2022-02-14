@@ -48,13 +48,22 @@ gettrend <- function(signal, degree=NULL, maxfreq=NULL, time=NULL){
     deg <- degree
   }
   if(deg > 6){
-    warning("Degree of the polynomial is greater than 6. It seems that the trend more of a regular oscilation. Consider using alternative tools.")
+    warning("Degree of the polynomial is greater than 6. It seems that the trend is more of a regular oscilation. Consider using alternative tools.")
   }
-  if(!is.null(time)){
-    x <- seq(0, time, length.out=length(signal))
+  if(length(time) > 1){
+    if(length(time)==length(signal)){
+      x <- time
+    }
+    else stop("The 'time' must be either a positive number or a vector of length equal to the length of the 'signal'.")
   }
   else if(is.ts(signal)){
     x <- as.vector(time(signal))
+  }
+  else if(!is.null(time)){
+    if(length(time)==1 & time > 0){
+      x <- seq(0, time, length.out=length(signal))
+    }
+    else stop("The 'time' must be either a positive number or a vector of length equal to the length of the 'signal'.")
   }
   else{
     x <- seq(length(signal))
