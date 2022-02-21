@@ -175,6 +175,18 @@ plot(time, orig, type = "l", xlab = "Time [s]", ylab = "Val", main = "Original s
 plot(time, res, type = "l", xlab = "Time [s]", ylab = "Val", main = "Detrended signal")
 ```
 
+### Get trend
+
+```{r get_trend}
+print(detrend)
+```
+
+### Or interpolate it
+
+```{r interpolate}
+predict(detrend, newtime = 50:100)
+```
+
 
 ## Authors
 **Tomasz Smoleń**, <tomasz.smolen@uj.edu.pl>, [ORCID](https://orcid.org/0000-0003-1884-4909)
